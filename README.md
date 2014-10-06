@@ -89,12 +89,12 @@ Search a binary file for specific instructions. Assembled on the fly.
 
 Converts the human readable payload into a binary file:
 
-		$ sky_generate -f ..sqlite3 result.txt > payload.bin
+    $ sky_generate -f ..sqlite3 result.txt > payload.bin
 
 An offset may also be given (should correspond to the load address of the
 exploited library):
 
-		$ sky_generate -f ..sqlite3 -o 0x7ffff4b00 result.txt > payload.bin
+    $ sky_generate -f ..sqlite3 -o 0x7ffff4b00 result.txt > payload.bin
 
 ### sky_convert
 
