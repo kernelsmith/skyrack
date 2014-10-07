@@ -1,3 +1,9 @@
+binbase = __FILE__
+while File.symlink?(binbase)
+  binbase = File.expand_path(File.readlink(binbase), File.dirname(binbase))
+end
+$:.unshift(File.expand_path(File.join(File.dirname(binbase), '../', 'lib')))
+
 require 'test/unit'
 require 'skyrack/gadget_db'
 require 'tempfile'
