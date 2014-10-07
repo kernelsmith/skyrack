@@ -1,21 +1,13 @@
 #!/usr/bin/env ruby
 
-begin
-		require 'skyrack/gadget_db'
-		require 'skyrack/functions'
-rescue LoadError
-		require 'rubygems'
-		require 'skyrack/gadget_db'
-		require 'skyrack/functions'
-end
-
-# {{{ arg parsing
+require 'skyrack/gadget_db'
+require 'skyrack/functions'
 require 'optparse'
 
 def exit_with_arg_error(opts, str=nil)
-    puts str if str
-    puts opts
-    exit 1
+ puts str if str
+ puts opts
+ exit 1
 end
 
 
@@ -28,26 +20,23 @@ opt[:offset] = 0
 dest = nil
 
 opts = OptionParser.new do |opts|
-    opts.banner = "Usage : %s run.txt " % File.basename(__FILE__)
+ opts.banner = "Usage : %s run.txt " % File.basename(__FILE__)
 
-    opts.separator "General options"
-    opts.on("-f", "--file FILENAME", String, "sqlite3 db") { |f| opt[:db][:type] = :sqlite; opt[:db][:filename] = f }
-    opts.on("-v", "--verbosity", "Use more than once to increase verbosity") { $verbosity += 1 }
+ opts.separator "General options"
+ opts.on("-f", "--file FILENAME", String, "sqlite3 db") { |f| opt[:db][:type] = :sqlite; opt[:db][:filename] = f }
+ opts.on("-v", "--verbosity", "Use more than once to increase verbosity") { $verbosity += 1 }
 
-    opts.separator "Function options"
-    opts.on("-o", "--offset offset", OptionParser::OctalInteger, "instruction description") { |o| opt[:offset] = o }
+ opts.separator "Function options"
+ opts.on("-o", "--offset offset", OptionParser::OctalInteger, "instruction description") { |o| opt[:offset] = o }
 
-    opts.separator "Output options"
-    opts.on("-b", "--binary", "output in binary form") { |d| opt[:binary] = true }
+ opts.separator "Output options"
+ opts.on("-b", "--binary", "output in binary form") { |d| opt[:binary] = true }
 end
 
 opts.parse!
 
-exit_with_arg_error("missing template file") if ARGV.size != 1
+exit_with_arg_error("missing template file") unless ARGV.size == 1
 file = ARGV[0]
-
-# }}} end of arg parsing
-
 
 db = GadgetDb.new(opt[:db][:filename])
 
@@ -58,5 +47,3 @@ $stderr.puts "offset: %d" % opt[:offset]
 $stderr.puts chain.inspect
 $stderr.puts "payload binary size: %d" % chain.to_b.size
 $stdout.write chain.to_b(opt[:offset])
-
-

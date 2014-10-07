@@ -6,5 +6,4 @@ irb -rrubygems -rskyrack -rskyrack/instr
 # @opcode=#<Metasm::Opcode:0x2f7a768 @args=[], @bin_mask=[255], @props={},
 # @bin=[144], @fields={}, @name="nop">,
 # @instruction=#<Metasm::Instruction:0x2cf7180 @args=[], @opname="nop",
-# @cpu=#<Metasm::Ia32:17ff5fc ... >, @backtrace=nil>>, @addr=0> 
-
+# @cpu=#<Metasm::Ia32:17ff5fc ... >, @backtrace=nil>>, @addr=0>
