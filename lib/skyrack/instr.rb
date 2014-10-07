@@ -27,8 +27,7 @@ class Instr
   def initialize(raw, addr=0)
     @instr, @dis = Instr.decode(raw)
     unless @instr
-      raise Metasm::Exception.new("could not generate instruction with binary"
-        + " '%s' @0x%08x" % [raw.unpack('H*'), addr])
+      raise Metasm::Exception.new("could not generate instruction with binary #{raw.unpack('H*')} @0x%08x" % [addr])
     end
     @addr = addr
     @bin  = raw
@@ -48,9 +47,12 @@ class Instr
   # decodes the current string as a Shellcode, with specified base address
   # returns the resulting Disassembler
   def self.decode(str, base_addr=0, eip=base_addr)
-    return false unless str
-    res = @@cpu.decode_instruction Metasm::EncodedData.new(str), eip
-    res.nil? || res.bin_length != str.size ? false : res
+    if str
+      res = @@cpu.decode_instruction(Metasm::EncodedData.new(str), eip)
+      res.nil? || res.bin_length != str.size ? false : res
+    else
+      false
+    end
   end
 
   def self.decode_with_dis(str, base_addr=0, eip=base_addr)
@@ -67,7 +69,7 @@ class Instr
       puts "Error: #{e.class} #{e.message} with %s" %
         str.unpack('C*').map {|s| s.to_s(16)}.inspect if $verbosity > 1
     end
-    res, dis
+    [res, dis]
   end
 
   def self.assemble(str, address = 0)
@@ -125,6 +127,7 @@ class Instr
   def self.str2reg(str)
     reg.from_str(str)
   end
+  # @TODO: change to str_to_reg
 
   def self.cpu; @@cpu; end
 
