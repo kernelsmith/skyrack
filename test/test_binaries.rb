@@ -52,7 +52,7 @@ def test(filename, macho_type=nil, infos = false)
 
   m = Metasm::AutoExe.decode_file(opt[:filename])
 
-  if m.class == Metasm::MachO then
+  if m.class == Metasm::MachO
     m = Metasm::UniversalBinary.decode_file(opt[:filename])
     choice = nil
     m.archive.each_with_index do |ar, idx|
@@ -92,7 +92,7 @@ class TestBinaryFiles < Test::Unit::TestCase
     for filename in Dir[directory] do
       next unless File.file? filename
       puts "processing %s" % filename
-      if filename.index('macho') then
+      if filename.index('macho')
         for arch in %w(x86_64 i386) do
           yield(filename, arch)
         end

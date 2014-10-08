@@ -28,7 +28,7 @@ class Gadget < Array
   end
 
   def dis(base_addr=0, eip=base_addr)
-    if @dis then
+    if @dis
       @dis
     else
       eip = 0

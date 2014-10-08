@@ -149,7 +149,7 @@ class GadgetDb
     sql("BEGIN");
     gadget.each_vertex do |instr|
       ret_addr = gadget.ret_addr
-      if ret_addr == instr.addr then
+      if ret_addr == instr.addr
         ret_distance = 0
       else
         ret_distance = gadget.from_addr(instr.addr).size
@@ -272,7 +272,7 @@ class GadgetDb
     req << " ORDER BY ret_distance ASC"
     puts req if @verbosity > 2
 
-    if @verbosity > 3 then
+    if @verbosity > 3
       req_count = "SELECT COUNT(*) FROM gadgets WHERE " << conds.join(' AND ')
       res_count = sql(req_count).first
       puts "found %d" % [res_count[0].to_i]

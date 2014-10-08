@@ -29,7 +29,7 @@ def compute_reg(val)
   res
 end
 
-if $0 == __FILE__ then
+if $0 == __FILE__
   val = ARGV[0].to_i
   puts "converting %d" % val
   list_ops = set_reg(val)
