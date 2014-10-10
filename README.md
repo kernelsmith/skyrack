@@ -127,10 +127,12 @@ Metasm: http://metasm.cr0.org/ https://github.com/jjyg/metasm
 
 ## Changelog
 
+### v0.2.1
+        * metasm is now a gem, no need for RUBYLIB modification
+
 ### v0.2.0
         * first version from Joshua Smith, mostly cosmetic changes
         * cleaned up some code and code formatting to conform to idiomatic Ruby
-        * metasm is now a gem, no need for RUBYLIB modification
         * modified tests for modern Ruby which has a different default encoding
         * moving towards a bundler approach and publishing to rubygems.org
 
