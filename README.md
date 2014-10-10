@@ -1,6 +1,7 @@
 # Skyrack
 
-Premier sur le rop.
+Premier sur le ROP.
+First on the ROP.
 
 ## Installation
 
@@ -28,15 +29,7 @@ Fedora:
 
 You also need metasm:
 
-    $ hg clone https://metasm.googlecode.com/hg/ metasm
-
-or
-
-   $ git clone git://github.com/jjyg/metasm.git
-
-You'll then need yo set your Ruby path points to Metasm directory:
-
-    $ export RUBYLIB=$RUBYLIB:/path/to/metasm
+    $ gem install metasm
 
 ## Documentation
 
@@ -117,21 +110,29 @@ sky_convert:
 If you can't find sky_* in your path, you may access it directly this way:
 
     $ gem which skyrack
-    /.../gems/ree-1.8.7-head/gems/skyrack-0.1.2.1/lib/skyrack.rb
 
 bin/ directory is at the same level as lib/:
 
-    $ /.../gems/ree-1.8.7-head/gems/skyrack-0.1.2.1/bin/sky_build_db
+    $ cd `gem which skyrack`/bin/
 
 ## Links
 
-Skyrack is written by Jean-Baptiste Aviat, an HSC consultant.
+Skyrack wass written by Jean-Baptiste Aviat, an HSC consultant.
 http://www.hsc.fr
+Skyrack is currently maintained by Joshua Smith
+https://github.com/kernelsmith
 
-Metasm: http://metasm.cr0.org/
+Metasm: http://metasm.cr0.org/ https://github.com/jjyg/metasm
 
 
 ## Changelog
+
+### v0.2.0
+        * first version from Joshua Smith, mostly cosmetic changes
+        * cleaned up some code and code formatting to conform to idiomatic Ruby
+        * metasm is now a gem, no need for RUBYLIB modification
+        * modified tests for modern Ruby which has a different default encoding
+        * moving towards a bundler approach and publishing to rubygems.org
 
 ### v0.1.2
         * new generation method, now 10 times faster

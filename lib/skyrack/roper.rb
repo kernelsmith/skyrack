@@ -1,12 +1,5 @@
 require 'skyrack/instr'
-
-begin
-  require 'metasm'
-rescue LoadError => e
-  puts e.inspect, ""
-  puts "You have to use metasm and to run %s with metasm path:" % $0
-  puts "  $ RUBYLIB=/path/to/metasm/ ruby %s bin.exe" % $0
-end
+require 'metasm'
 
 $verbosity = 0
 
