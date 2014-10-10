@@ -6,9 +6,9 @@ Gem::Specification.new do |s|
   s.name        = "skyrack"
   s.version     = Skyrack::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Jean-Baptiste Aviat"]
-  s.email       = ["Jean-Baptiste.Aviat@hsc.fr"]
-  s.homepage    = "http://www.hsc.fr/"
+  s.authors     = ["Jean-Baptiste Aviat", "Joshua Smith"]
+  s.email       = ["Jean-Baptiste.Aviat@hsc.fr", "kernelsmith@kernelsmith.com"]
+  s.homepage    = "https://github.com/kernelsmith/skyrack"
   s.summary     = %q{Lists gadgets from binary files.}
   s.description = %q{Lists gadgets from binary files and helps to generate ROP payloads.}
 
@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
 	s.add_dependency("sqlite3")
 	s.add_dependency("rgl")
 
-	exclude = %w(samples lib/skyrack/expr.rb todo.txt notes bin/sky_publish hscdemo doc notes pkg)
+	exclude = %w(sublime samples lib/skyrack/expr.rb todo.txt notes bin/sky_publish hscdemo doc notes pkg)
 
   s.files         = `git ls-files`.split("\n").select { |f| exclude.select { |e| f.index(e) }.size == 0 }
   puts s.files

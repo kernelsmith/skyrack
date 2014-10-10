@@ -12,7 +12,7 @@ end
 task :onfile_rdoc do
 end
 
-# desc "Publish Skyrack to HSC website"
+# desc "Publish Skyrack to website"
 # task :publish => [:build] do
 #   targets = []
 #   targets << Dir[File.join('pkg', '*.gem')].sort.last
